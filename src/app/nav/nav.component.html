@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+<div class="pos-f-t" >
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div (click)="collapse()" class="bg-primary p-4">
+        <!-- CONTENT START -->
+        <a *ngIf="!userLogged" [routerLink]="['login']" class="text-white h7">Login or create account</a>
+        <a *ngIf="!userLogged" [routerLink]="['learn']" class="text-white h7">Learn more about our products and services</a>
+
+        <a *ngIf="userLogged" [routerLink]="['profile']" class="text-white h7">View Profile</a>
+        <a *ngIf="userLogged" [routerLink]="['newOrder']" class="text-white h7">Place an order</a>
+        <a *ngIf="userLogged" (click)="logout()" class="text-white h7">Logout</a>
+        <!-- CONTENT END -->
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-primary">
+      <i (click)="homeClick()" id="pump" class="fas fa-gas-pump"></i>
+      <span id="titulo">VIP Service Center</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+</div>
+
+<script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>

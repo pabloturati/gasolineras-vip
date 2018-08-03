@@ -1,0 +1,65 @@
+i{
+    font-size: 50px;
+}
+
+.care{
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 0 0;
+    font-size: 35px;
+}
+
+#carCare{
+    background-color: rgb(51,171,249);
+}
+
+#homeCare{
+    background-color: rgb(254,214,49);
+}
+
+ul{
+    margin:0;
+    padding: 0;
+}
+
+li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#carDetails>h5{
+    background-color: rgba(51, 170, 249, 0.468);
+}
+
+#homeDetails>div>h5{
+    background-color: rgba(254,214,49, 0.468);
+}
+
+h5{
+    font-size: 20px;
+    text-decoration: underline;
+    width: 50%;
+    height: 50px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h6{
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    margin: 3px 0 3px 0;
+}
+p{
+    font-size: 15px;
+    margin: 0;
+}

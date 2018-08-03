@@ -1,0 +1,63 @@
+<section>
+  <div (click)="toggleCar()" class="care" id="carCare">
+    <i class="fas fa-car"></i>
+    <span>Car-care</span>
+  </div>
+  <div *ngIf="showCar" id="carDetails">
+    <ul>
+      <li>
+        <h6>Refueling service</h6>
+        <p>We'll bring the fuel to your door. <br>Yes, it can be regular or premium</p>
+        <img src="../../assets/learn-more/refuel.jpg" width="300">
+      </li>
+      <li>
+        <h6>Maintainance pickup</h6>
+        <p>No time to take to service? <br> We'll pick it up for you.</p>
+        <img src="../../assets/learn-more/maintainance.jpg" width="200">
+      </li>
+      <li>
+        <h6>Emission Testing</h6>
+        <p>No time to take the car over it's regular service?</p>
+        <img src="../../assets/learn-more/emission.jpg" width="200">
+      </li>
+      <li>
+        <h6>Emergency: Roadside Assistance</h6>
+        <p>Don't panic, press the emergency button.<br> We'll get there right away.</p>
+        <img src="../../assets/learn-more/emergencyCar.jpg" width="250">
+      </li>
+    </ul>
+  </div>
+  <div (click)="toggleHome()" class="care" id="homeCare">
+    <i class="fas fa-home"></i>
+    <span>Home-care</span>
+  </div>
+  <div *ngIf="showHome" id="homeDetails"> 
+    <ul>
+      <li>
+        <h6>Propane refill?</h6>
+        <p>You bet! <br> Schedule a visit</p>
+        <img src="../../assets/learn-more/lprefill.png" width="200">
+      </li>
+      <li>
+        <h6>Online propane tank level</h6>
+        <p>Login to see your current propane level <br> and order a refill... from your phone</p>
+        <img src="../../assets/learn-more/levelIndicator.jpg" width="200">
+      </li>
+      <li>
+        <h6>New Heater or Stove installation</h6>
+        <p>We'll get it done properly.</p>
+        <img src="../../assets/learn-more/heater.jpg" width="200">
+      </li>
+      <li>
+        <h6>Tanks & Installations</h6>
+        <p>Portable or fixed. We've got you covered.</p>
+        <img src="../../assets/learn-more/tankInstall.jpg" width="200">
+      </li>
+      <li>
+        <h6>Emergency: Report a leak</h6>
+        <p>Push that button. We'll get to you</p>
+        <img src="../../assets/learn-more/emergencyLP.png" width="200">
+      </li>
+    </ul>
+  </div>
+</section>

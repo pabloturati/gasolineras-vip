@@ -1,0 +1,24 @@
+span#titulo{
+    color:white;
+    font-size: 20px;
+}
+
+i#pump{
+    color: white;
+    font-size: 30px;
+}
+
+div.p-4{
+    display: flex;
+    flex-direction: column;
+
+}
+a.h7{
+    margin-bottom: 3px;
+}
+
+a.h7:hover{
+    color: black;
+    background-color: orange;
+    text-decoration: none;
+}

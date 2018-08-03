@@ -1,0 +1,28 @@
+<h1 *ngIf="user">Hola {{user.username}}</h1>
+
+<section >
+  <div class="main" *ngIf="isLogged">
+      <!-- *ngIf="isLogged" -->
+    <div class="localLogin">
+      <h2>Registered Users</h2>
+      <input placeholder="Email" [(ngModel)]="auth.email" type="text">
+      <input placeholder="Password" [(ngModel)]="auth.password"  type="password">
+      <button (click)="login()" >Login</button>
+    </div>
+    <div class="localLogin">
+      <button type="button" class="btn btn-primary" (click)="loginWithFacebook()" >Facebook Login</button>
+      <button type="button" class="btn btn-danger" (click)="loginWithGoogle()" >Google Login</button>
+    </div>
+    <h3>Want a free account? <span (click)="change()" >Click HERE</span></h3>
+  </div>
+  
+  <div class="create" *ngIf="!isLogged">
+      <!-- *ngIf="!isLogged" -->
+    <h2>Create your new free account</h2>
+    <input [(ngModel)]="auth.username" placeholder="username" type="text">
+    <input placeholder="email" [(ngModel)]="auth.email" type="text">
+    <input placeholder="tu password" [(ngModel)]="auth.password"  type="password">
+    <button (click)="signup()" >Registrarme</button>
+    <h3>Already have an account? <span (click)="change()" >Click HERE</span></h3>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+h2{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+ul{
+    font-size: 13px;
+    font-weight: 100;
+    margin-bottom: 3px;
+}
+
+section{
+    width:90%;
+    height: 90vh;
+    background-color: lightgray;
+    margin: auto;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.profileInfo{
+    width: 80%;
+    text-align: center;
+    background-color: rgba(100,172,180, 1);
+    padding: 20px 0 20px 0;
+    justify-content: center;
+    margin-top: 5px;
+}
+.profileInfo>ul{
+    margin:0; padding: 0;
+    list-style: none;
+}
+
+div.orders{
+    /* height: 100px; */
+    margin-top: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+.purchase *{
+    margin-top: 10px;
+    height: 100px;
+    width: 200px;
+}
+
+.emergencyServices{
+    height: 120px;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.emergencyServices button{
+    width: 200px;
+    height: 30%;
+    margin-top: 15px;
+}
+button{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
