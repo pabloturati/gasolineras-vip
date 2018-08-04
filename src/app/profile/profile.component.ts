@@ -25,9 +25,11 @@ export class ProfileComponent implements OnInit {
     this.email = this.user.email
     this.photoURL = this.user.photoURL
     //console.log(this.user, this.username, this.email, this.photoURL)
-    //Quitar
-    this.router.navigateByUrl('/newOrder')
-
+     
+    //////////////////////////Esto
+    //Quitar para arregalar ruta de inicio
+    //this.router.navigateByUrl('/newOrder')
+    //////////////////////////Esto
   }
   purchase(){
     this.router.navigateByUrl('/newOrder')

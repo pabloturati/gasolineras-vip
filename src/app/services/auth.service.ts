@@ -33,6 +33,14 @@ export class AuthService {
   //   .pipe(map(res=>res.json()))
   // }
 
+  getLoggedUser(){
+    return this.http.get(this.url + 'loggedUser', {withCredentials:true})
+    .pipe(map(res=>{
+      return res.json()
+      //console.log(res)
+    }))
+  }
+
   logout(){
     localStorage.removeItem('user')
     this.router.navigate(['login'])

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import {AuthService} from '../services/auth.service'
 import {Router} from '@angular/router'
 import {FirebaseService} from '../services/firebase.service'
@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
     this.firebaseService.loginWithFacebook()
       .then(response=>{
         this.router.navigate(['profile'])
+        window.location.reload();
       })
     
   }
