@@ -25,9 +25,6 @@ export class NewOrderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.user = JSON.parse(localStorage.getItem('user'))
-    //console.log(this.user)
-    //console.log(this.user._id)
     this.resetform()
 
     //Get logged user
@@ -45,6 +42,7 @@ export class NewOrderComponent implements OnInit {
     this.otherLocation = false
     this.installDetail = false
     this.orderComplete = false
+    
   }
   toggleCarHome(value){
     this.resetform()
@@ -80,8 +78,8 @@ export class NewOrderComponent implements OnInit {
     //this.newOrder.customer = this.userId;
     this.saleService.createSale(this.newOrder)
     .subscribe(p=>{
-      console.log(this.newOrder)
-    })
-    
+      alert("New Order Posted")
+      this.router.navigate(['profile'])
+    }) 
   }
 }

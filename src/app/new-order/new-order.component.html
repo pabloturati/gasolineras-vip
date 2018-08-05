@@ -41,5 +41,5 @@
     </select>
     <textarea *ngIf="installDetail" [(ngModel)]="newOrder.installDetail" name="newInstallDetail" rows="4" cols="50" placeholder="Detail of installation"></textarea>
   </div>
-  <input *ngIf="orderComplete" type="submit" (click)="submitOrder()" value="Submit my order">
+  <input class="submit" *ngIf="orderComplete" type="submit" (click)="submitOrder()" value="Submit my order">
 </section>

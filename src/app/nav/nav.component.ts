@@ -1,45 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChange } from '@angular/core';
 import {Router} from '@angular/router'
 import {AuthService} from '../services/auth.service'
 import {UpdateNavService} from '../services/update-nav.service'
+import { Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnChanges {
+  
+  @Input() changeActivation: boolean
 
   userLogged: boolean;
 
   constructor(
     private authService: AuthService,
-    private updateNavService: UpdateNavService,
+    //private updateNavService: UpdateNavService,
     private router: Router){
     this.userLogged = false
   }
-  ngOnInit() {
-    // this.updateNavService.userOperation().subscribe(result=>{
-    //     console.log("aca es")
-    //     console.log(result)
-    //     this.userLogged = result;
-    // })
-    
-    // If the user is logged
+
+  ngOnChanges(changes){
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))
       this.userLogged = true;
-      this.router.navigate(['profile']) 
     }
   }
 
-  //AQUI>>!!!!!!!!!!!
-  userLoggedIn(){
-    if(localStorage.getItem('user')){
-      this.userLogged = true
-      console.log("updated because user loggedin")
-    }
-  }
+  // //AQUI>>!!!!!!!!!!!
+  // userLoggedIn(){
+  //   if(localStorage.getItem('user')){
+  //     this.userLogged = true
+  //     console.log("updated because user loggedin")
+  //   }
+  // }
 
   homeClick(){
     this.collapse();

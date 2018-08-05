@@ -17,7 +17,6 @@ firebase.initializeApp(config);
   providedIn: 'root'
 })
 
-// https://modulo3project.firebaseapp.com/__/auth/handler
 export class FirebaseService {
   url = 'http://localhost:3000/'
   constructor() { }
@@ -58,6 +57,4 @@ export class FirebaseService {
       console.log(res)
     }) 
   }
-
-
 }

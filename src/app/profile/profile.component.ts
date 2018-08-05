@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { stringify } from '@angular/core/src/util';
 import {Router} from '@angular/router'
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -13,24 +14,32 @@ export class ProfileComponent implements OnInit {
   username: string
   photoURL: string
   email: string
+  orders: Array<any>
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { 
+    this.orders = []
   }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'))
-    this.username = this.user.username
-    this.email = this.user.email
-    this.photoURL = this.user.photoURL
-    //console.log(this.user, this.username, this.email, this.photoURL)
+    this.authService.getLoggedUser()
+    .subscribe(user=>{
+      console.log(user)
+      this.user = user
+      this.username = this.user.username
+      this.email = this.user.email
+      this.photoURL = this.user.photoURL
+      this.orders = this.user.purchases
+    })
      
     //////////////////////////Esto
     //Quitar para arregalar ruta de inicio
-    //this.router.navigateByUrl('/newOrder')
+    this.router.navigateByUrl('/newOrder')
     //////////////////////////Esto
   }
+
   purchase(){
     this.router.navigateByUrl('/newOrder')
   }

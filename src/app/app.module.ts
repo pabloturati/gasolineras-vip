@@ -29,7 +29,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { RoadAssistanceComponent } from './road-assistance/road-assistance.component';
 import { GasEmergencyComponent } from './gas-emergency/gas-emergency.component';
-// import { PrivateComponent } from './private/private.component'
+
+//Child Sample
+import { ChildSampleComponent } from './child-sample/child-sample.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { GasEmergencyComponent } from './gas-emergency/gas-emergency.component';
     ProfileComponent,
     NewOrderComponent,
     RoadAssistanceComponent,
-    GasEmergencyComponent
+    GasEmergencyComponent,
+    ChildSampleComponent   //Child Sample
   ],
   imports: [
     BrowserModule,

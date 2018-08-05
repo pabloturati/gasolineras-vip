@@ -1,14 +1,14 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import {Http, Response} from '@angular/http'
 import {map} from 'rxjs/operators'
 import {Observable} from 'rxjs'
 import { Router } from '@angular/router'
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   
   url = "http://localhost:3000/"
@@ -28,16 +28,10 @@ export class AuthService {
     .pipe(map(res=>res.json()))
   }
 
-  // getPrivatePhones(){
-  //   return this.http.get(this.url + 'private', {withCredentials:true})
-  //   .pipe(map(res=>res.json()))
-  // }
-
   getLoggedUser(){
     return this.http.get(this.url + 'loggedUser', {withCredentials:true})
     .pipe(map(res=>{
       return res.json()
-      //console.log(res)
     }))
   }
 

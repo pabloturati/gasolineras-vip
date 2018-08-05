@@ -3,6 +3,7 @@ import {AuthService} from '../services/auth.service'
 import {Router} from '@angular/router'
 import {FirebaseService} from '../services/firebase.service'
 import {UpdateNavService} from '../services/update-nav.service'
+//import { Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -37,9 +38,7 @@ export class LoginComponent implements OnInit {
     .subscribe(user=>{
       this.user = user
       localStorage.setItem('user', JSON.stringify(user))
-      this.router.navigate(['profile'])
-      window.location.reload();
-      //this.updateNavService.userOperation(); 
+      this.router.navigate(['profile']) 
     })
   }
 
@@ -47,7 +46,6 @@ export class LoginComponent implements OnInit {
     this.firebaseService.loginWithFacebook()
       .then(response=>{
         this.router.navigate(['profile'])
-        window.location.reload();
       })
     
   }
