@@ -32,6 +32,7 @@ import { GasEmergencyComponent } from './gas-emergency/gas-emergency.component';
 
 //Child Sample
 import { ChildSampleComponent } from './child-sample/child-sample.component';
+import { MapApiComponent } from './map-api/map-api.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ChildSampleComponent } from './child-sample/child-sample.component';
     NewOrderComponent,
     RoadAssistanceComponent,
     GasEmergencyComponent,
-    ChildSampleComponent   //Child Sample
+    ChildSampleComponent,
+    MapApiComponent   //Child Sample
   ],
   imports: [
     BrowserModule,

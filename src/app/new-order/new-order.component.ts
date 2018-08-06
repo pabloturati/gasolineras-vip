@@ -17,6 +17,7 @@ export class NewOrderComponent implements OnInit {
   installDetail: boolean
   orderComplete: boolean
   userId: any;
+  showMap: boolean
 
   constructor(
     private saleService: SaleService,
@@ -34,11 +35,11 @@ export class NewOrderComponent implements OnInit {
     //     //console.log(this.userId)
     //   })
   }
-
   resetform(){
     this.newOrder = {}
     this.carOrder = false
     this.homeOrder = false
+    this.showMap = false
     this.otherLocation = false
     this.installDetail = false
     this.orderComplete = false
@@ -72,6 +73,7 @@ export class NewOrderComponent implements OnInit {
     else{
       this.otherLocation = true
     }
+    this.showMap = true
     this.orderComplete = true; //activate submit
   }
   submitOrder(){

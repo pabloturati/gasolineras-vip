@@ -1,0 +1,26 @@
+<div #gmap id="gmap"></div>
+
+
+<!-- <form class="form-inline" #form="ngForm" (ngSubmit)="setCenter($event)" ac>
+    <div class="form-group">
+      <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Go</button>
+</form> -->
+
+<input id="address" type="textbox" (keyup.enter)="findAddress($event.target.value)" value="Sydney, NSW">
+<!-- <button type="submit" (click)="geoLocate()">Hola</button> -->
+
+<button (click)="getPosition()">GetPosition</button>
+
+
+<!-- <div class="col-md-6 col-sm-12 col-xs-12">
+    <label>Select Marker: </label>
+    <select [(ngModel)]="selectedMarkerType" name="category">
+      <option *ngFor="let marker of markerTypes" [value]="marker.value">{{marker.text}}</option>
+    </select>
+    <button type="button" (click)="showCustomMarker()" class="btn btn-primary" [disabled]="form.invalid"> Custom Marker</button>
+</div> -->

@@ -44,6 +44,7 @@ export class NavComponent implements OnChanges {
 
   collapse(){
     let div = document.getElementById("navbarToggleExternalContent")
+    
     div.classList.remove("show")
   }
 

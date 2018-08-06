@@ -1,4 +1,5 @@
 <section>
+        <app-map-api *ngIf="true"></app-map-api>
   <!-- Car or Home? -->
   <div class="query">
     <label for="category">Select your purchase category:</label>
@@ -29,6 +30,7 @@
         <label>Other pickup location</label>
         <input [(ngModel)]="newOrder.location" name="otherLocation"  type="text" placeholder="Other Location">
     </div>
+    
   </div> 
     <!-- Home-care Options-->
   <div *ngIf="homeOrder" class="query">
