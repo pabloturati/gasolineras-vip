@@ -12,81 +12,83 @@ h2{
     font-weight: bold;
     margin-bottom: 3px;
 }
-ul{
-    font-size: 13px;
-    font-weight: 100;
-    margin-bottom: 3px;
-}
 
 section{
     width:90%;
+    min-height: 90%;
+    /* min-height: 90%; */
     background-color: lightgray;
     margin: auto;
-    margin-top: 8px;
+    margin-top: 3px;
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-content: space-between;
+}
+/* Emergency Service Section */
+div.emergencyServices{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    margin: 10px 0 10px 0;
 }
 
+div.emergencyServices button{
+    width: 200px;
+    height: 80px;
+}
+
+/* Profile Section */
 .profileInfo{
     width: 80%;
     text-align: center;
-    background-color: rgba(100,172,180, 1);
+    background-color: white;
     padding: 20px 0 20px 0;
     justify-content: center;
-    margin-top: 5px;
+
 }
 .profileInfo>ul{
     margin:0; padding: 0;
     list-style: none;
 }
-
-div.orders{
-    /* height: 100px; */
-    margin-top: 10px;
-    align-items: flex-start;
-    justify-content: flex-start;
+ul{
+    font-size: 15px;
+    padding: 1px;
+    font-weight: 100;
+    margin-bottom: 3px;
+}
+span{
+    font-weight: 900;
+    color: darkblue;
 }
 
-
+/* New Order Section */
 .purchase *{
     margin-top: 10px;
     height: 100px;
     width: 200px;
 }
 
-.emergencyServices{
-    height: 120px;
-    justify-content: flex-end;
-    margin-bottom: 10px;
+
+#listBtn{
+    margin-top: 5px;
+    width: 300px;
 }
 
-.emergencyServices button{
-    width: 200px;
-    height: 30%;
-    margin-top: 15px;
+#orderGroup{
+    margin-top:20px;
 }
-button{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-span{
-}
-
-.orders{
-    width:90%;
-    
-}
-
-.orders>h2{
-    width:100%;
-    padding: 4px;
-    text-align: center;
-    font-weight: bold;
+#orderGroup H2{
     font-size: 20px;
 }
 
-.orderList{
-    width: 100%;
-    text-align: left;
-    margin: 10px 0 10px 0;
+.progress{
+    width: 80%;
+    background-color: white;
+    
+    display: flex;
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+
 }

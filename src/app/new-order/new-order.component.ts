@@ -16,8 +16,12 @@ export class NewOrderComponent implements OnInit {
   otherLocation: boolean
   installDetail: boolean
   orderComplete: boolean
-  userId: any;
+  user: any
   showMap: boolean
+  
+  //Child Comm
+  dynamicAddress: string;
+  findMe: boolean
 
   constructor(
     private saleService: SaleService,
@@ -29,21 +33,17 @@ export class NewOrderComponent implements OnInit {
     this.resetform()
 
     //Get logged user
-    // this.authService.getLoggedUser()
-    //   .subscribe(response=>{
-    //     this.userId = response._id;
-    //     //console.log(this.userId)
-    //   })
+    this.authService.getLoggedUser()
+    .subscribe(response=>{
+      this.user = response;
+    })
   }
+  //Form logic
   resetform(){
     this.newOrder = {}
-    this.carOrder = false
-    this.homeOrder = false
-    this.showMap = false
-    this.otherLocation = false
-    this.installDetail = false
-    this.orderComplete = false
-    
+    this.carOrder = this.homeOrder = this.showMap = this.otherLocation = this.installDetail = this.orderComplete = false
+    this.dynamicAddress = null
+    this.findMe = null
   }
   toggleCarHome(value){
     this.resetform()
@@ -57,27 +57,43 @@ export class NewOrderComponent implements OnInit {
       this.newOrder.operation = "home";
     }
   }
+  //Home Choice Logic
   choice(value){
     this.newOrder.serviceChoice = value;
-    if(this.newOrder.operation == "home"){
-      this.orderComplete = true //activate sumit
-      this.location('home')
-    }
     if(value === "newInstall") this.installDetail = true
-    
+    if(this.newOrder.operation === "home"){
+      this.location('Home')
+    }    
   }
+  //Location Logic
   location(value){
-    if(value === "Home"){
-      this.newOrder.location = "Home"  //Change for user's address
+    if(value == "Home" && this.user.address ){
+      this.newOrder.location = this.dynamicAddress = this.user.address //Set the address
+      this.prepSubmit()
     }
     else{
-      this.otherLocation = true
+      this.otherLocation = true  //Activate input for another location
     }
+  }
+  searchNewLocation(){
+    this.dynamicAddress = this.newOrder.location  //Gets address from input box
+    this.prepSubmit()
+  }
+  findMyLocation(){
+    this.findMe = true;
+    this.prepSubmit()
+  }
+  getPosition(e){
+    alert("You Have been located! Latitude: "+e.lat+" Longitud "+e.lng)
+    this.newOrder.location = JSON.stringify(e)
+  }
+  //Sumbmit new Order Logic
+  prepSubmit(){
     this.showMap = true
     this.orderComplete = true; //activate submit
   }
+
   submitOrder(){
-    //this.newOrder.customer = this.userId;
     this.saleService.createSale(this.newOrder)
     .subscribe(p=>{
       alert("New Order Posted")

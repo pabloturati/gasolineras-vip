@@ -28,8 +28,9 @@ export class FirebaseService {
     .then(snap=>{
       //console.log(snap)
       //localStorage.setItem('facebookToken', JSON.stringify(snap.credential.accessToken) )
-      localStorage.setItem('user', JSON.stringify(snap.user))
-      this._sendTokenToBackend(snap)
+      localStorage.setItem('user', JSON.stringify(snap.user))      
+      this._sendTokenToBackend(snap)        
+      return snap
       //return snap
     })
   }
@@ -52,9 +53,10 @@ export class FirebaseService {
     .then(r=>{
       if(!r.ok) throw new Error()
       return r.json()
+     
     })
     .then(res=>{
-      console.log(res)
+      return res
     }) 
   }
 }

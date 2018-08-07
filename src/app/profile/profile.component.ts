@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   photoURL: string
   email: string
   orders: Array<any>
+  address: string;
+  usuario: any
 
   constructor(
     private router: Router,
@@ -22,8 +24,10 @@ export class ProfileComponent implements OnInit {
   ) { 
     this.orders = []
   }
-
   ngOnInit() {
+    this.usuario = localStorage.getItem('user')
+    if(!this.usuario) this.router.navigate(['/login'])
+
     this.authService.getLoggedUser()
     .subscribe(user=>{
       console.log(user)
@@ -32,24 +36,13 @@ export class ProfileComponent implements OnInit {
       this.email = this.user.email
       this.photoURL = this.user.photoURL
       this.orders = this.user.purchases
+      this.address = this.user.address
     })
-     
-    //////////////////////////Esto
-    //Quitar para arregalar ruta de inicio
-    this.router.navigateByUrl('/newOrder')
-    //////////////////////////Esto
   }
-
   purchase(){
     this.router.navigateByUrl('/newOrder')
   }
-
   reportRoadAssitance(){
     this.router.navigateByUrl('/roadAssistance')
   }
-
-  reportLeak(){
-    this.router.navigateByUrl('/gasEmergency')
-  }
-
 }

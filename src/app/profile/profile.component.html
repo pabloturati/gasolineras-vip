@@ -1,28 +1,38 @@
 <section>
+
+  <div class="emergencyServices">
+        <button type="button" class="btn btn-warning" (click)="reportRoadAssitance()">Report Roadside <br> assitance or emergency</button>
+        <!-- <button type="button" class="btn btn-danger" (click)="reportLeak()">Rerport an <br> emergency</button> -->
+  </div>
+
   <div class="profileInfo">
     <h2> Welcome {{username}} to your profile </h2>
     <div class="id">
         <ul>
-            <li>User Name:  {{username}}</li>
-            <li>Email: {{email}}</li>
-            <li>Address: {{email}}</li>
+            <li><span>User Name: </span>  {{username}}</li>
+            <li><span>Email: </span> {{email}}</li>
+            <li><span>Address:</span> {{address}}</li>
             <li><img src="{{photoURL}}" alt="Profile Pic" width="150"></li>
         </ul>
+    </div>
+  </div>
+  <h2> Your Home's Gas Tank Level </h2>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+    aria-valuemin="0" aria-valuemax="100" style="width:70%">
+        70%
     </div>
   </div>
 
   <div class="purchase">
       <button type="button" class="btn btn-success" (click)="purchase()">Schedule refill or service</button>
   </div>
-
-  <div class="emergencyServices">
-    <button type="button" class="btn btn-warning" (click)="reportRoadAssitance()">Roadside assitance</button>
-    <button type="button" class="btn btn-danger" (click)="reportLeak()">Rerport an emergency</button>
-  </div>
-
-  <div class="orders">
-    <h2> Active Orders</h2>
-      <button type="button" class="orderList list-group-item list-group-item-action" *ngFor="let order of orders"><span>Order: {{order.operation}} {{order.serviceChoice}}</span></button>
+  
+  <div id="orderGroup" class="btn-group-vertical" role="group" aria-label="Basic example">
+      <h2>Active Orders</h2>
+      <button type="button" id="listBtn" class="btn btn-secondary" *ngFor="let order of orders">
+          Order: {{order.operation}} {{order.serviceChoice}}
+      </button>
   </div>
 
 </section>

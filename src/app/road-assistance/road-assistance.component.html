@@ -1,3 +1,47 @@
-<p>
-  road-assistance works!
-</p>
+<section>
+  <!-- Car or Home? -->
+  <div>
+    <label for="category">The Emergency Category</label>
+    <select class="btn btn-info" name="category" (change)="toggleCarHome($event.target.value)">
+      <option disabled selected value> -- select an option -- </option>
+      <option value="Roadside Assistance">Roadside Assitance</option>
+      <option value="Gas Leak">Gas Leak</option>
+    </select>
+    <textarea class="last" [(ngModel)]="newReport.detail" name="newInstallDetail" rows="4"  placeholder="Detail of installation"></textarea>
+  </div>
+  <!-- Location -->
+  <div *ngIf="locationQuery">
+    <label for="location">Emergency Location</label>
+    <select class="btn btn-info" name="location" (change)="location($event.target.value)">
+      <option disabled selected value> -- select an option -- </option>
+      <option value="Home">Home</option>
+      <option value="Other">Other Location</option>
+    </select>
+  </div>
+  <!-- Other Location Logic -->
+  <div *ngIf="otherLocation">
+      <label>Other Emergency Location</label>
+      <input [(ngModel)]="newReport.location" name="otherLocation"  type="text" placeholder="Other Location">
+      <button type="button" class="btn btn-light last" (click)="searchNewLocation()">Search new Location</button>
+      <label>Or</label>
+      <button type="button" class="btn btn-success last" (click)="findMyLocation()">Find my location</button>
+  </div>
+  <!-- Map -->
+  <app-map-api class="last" *ngIf="showMap" [findMe]="findMe" [dynamicAddress]="dynamicAddress" (positionToReturn)="getPosition($event)"></app-map-api>
+  <!-- Submit Emergency Request -->
+  <div *ngIf="showPreSend" class="presend">
+      <button type="button" class="btn btn-warning" (click)="sumbmitToVerify()">Request Emergency Service</button>
+      <a class="btn btn-primary" role="button" (click)="cancelReport()">Cancel Report</a>
+  </div>
+</section>
+
+<div *ngIf="showConfirm" class="jumbotron"> 
+  <h1 class="display-10">Warning: You are about to request an Emergency Service Dispatch</h1>
+  <p class="lead">Please review the emergency request details before sending</p>
+  <hr class="my-4">
+  <p>Details are as follow:</p>
+  <a class="btn btn-danger btn-lg" role="button" (click)="finalVerify()">Report Emergency</a>
+  <a class="btn btn-primary btn-lg" role="button" (click)="cancelReport()">Cancel Report</a>
+</div>
+
+

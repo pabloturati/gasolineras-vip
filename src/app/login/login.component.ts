@@ -13,7 +13,7 @@ import {UpdateNavService} from '../services/update-nav.service'
 export class LoginComponent implements OnInit {
   isLogged = true
   auth = {}
-  user = null
+  user:any = null
 
   constructor(
     private firebaseService: FirebaseService,
@@ -28,32 +28,53 @@ export class LoginComponent implements OnInit {
 
   signup(){
     this.authService.signup(this.auth)
-    .subscribe(user=>{
-      this.user = user
-    })
+    .subscribe(
+      response=>{
+        this.user = response
+        alert("User Crated. Welcole "+this.user.username+". Please login to your new account")
+        console.log(this.user.username)
+      },
+      error => {
+        alert("Could not create user. Please try again" + error)
+        window.location.reload();
+        console.log(error)
+      },
+      () => {
+        this.login();
+      }
+    )
   }
 
   login(){
-    this.authService.login(this.auth)
-    .subscribe(user=>{
+    this.authService.login(this.auth).toPromise()
+    .then(user=>{
       this.user = user
       localStorage.setItem('user', JSON.stringify(user))
       this.router.navigate(['profile']) 
+      window.location.reload();
+    })
+    .catch(e=>{
+      alert(e.statusText+ " Please verify your credentials or create an account")
     })
   }
 
   loginWithFacebook(){
     this.firebaseService.loginWithFacebook()
       .then(response=>{
-        this.router.navigate(['profile'])
+        console.log(`que pedo`, response)
+        localStorage.setItem('user',JSON.stringify(response.user))
+        //window.location.reload();
+        this.authService.getLoggedUser()
+        .subscribe(r=>{
+          this.router.navigate(['profile'])
+          console.log("regreso: ", r)
+        })
       })
     
   }
-
   loginWithGoogle(){
     this.firebaseService.loginWithGoogle()
   }
-
   redirectToProfile(){
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))

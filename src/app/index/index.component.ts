@@ -7,7 +7,9 @@ import { Router } from '@angular/router'
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  mainImg: String = "../../assets/index/indexMainPic.jpg"
+  mainImg1: String = "../../assets/index/indexMainPic.jpg"
+  mainImg2: String = "../../assets/learn-more/emission.jpg"
+  mainImg3: String = "../../assets/learn-more/heater.jpg"
 
   constructor(private router: Router) { }
 

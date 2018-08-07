@@ -28,7 +28,7 @@ import { LearnMoreComponent } from './learn-more/learn-more.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { RoadAssistanceComponent } from './road-assistance/road-assistance.component';
-import { GasEmergencyComponent } from './gas-emergency/gas-emergency.component';
+// import { GasEmergencyComponent } from './gas-emergency/gas-emergency.component';
 
 //Child Sample
 import { ChildSampleComponent } from './child-sample/child-sample.component';
@@ -45,7 +45,6 @@ import { MapApiComponent } from './map-api/map-api.component';
     ProfileComponent,
     NewOrderComponent,
     RoadAssistanceComponent,
-    GasEmergencyComponent,
     ChildSampleComponent,
     MapApiComponent   //Child Sample
   ],

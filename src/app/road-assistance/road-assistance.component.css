@@ -1,0 +1,33 @@
+section{
+    width:90%;
+    min-height: 90%;
+    /* background-color: lightgray; */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+section *{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.jumbotron{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    height: 1000px;
+    width:100%;
+}
+.jumbotron a{
+    margin: 10px;
+}
+.presend{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

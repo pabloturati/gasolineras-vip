@@ -1,9 +1,8 @@
 <section>
-        <app-map-api *ngIf="true"></app-map-api>
   <!-- Car or Home? -->
   <div class="query">
     <label for="category">Select your purchase category:</label>
-    <select name="category" (change)="toggleCarHome($event.target.value)">
+    <select class="btn btn-info" name="category" (change)="toggleCarHome($event.target.value)">
         <option disabled selected value> -- select an option -- </option>
         <option value="car">Car-care</option>
         <option value="home">Home-care</option>
@@ -13,14 +12,14 @@
   <div *ngIf="carOrder" class="query">
     <div>
         <label for="carOption">Car pruchase Option</label>
-        <select name="carOption" (change)="choice($event.target.value)">
+        <select class="btn btn-info" name="carOption" (change)="choice($event.target.value)">
             <option disabled selected value> -- select an option -- </option>
             <option value="refuel">Refuel me!</option>
             <option value="maintenance">Maintenance pickup</option>
             <option value="emission">Emission Test</option>
         </select>        
-        <label for="pickUpLocation">Place of pickup</label>
-        <select name="pickUpLocation" (change)="location($event.target.value)">
+        <label class="last" for="pickUpLocation">Place of pickup</label>
+        <select class="btn btn-info" name="pickUpLocation" (change)="location($event.target.value)">
             <option disabled selected value> -- select an option -- </option>
             <option value="Home">Home</option>
             <option value="Other">Other</option>
@@ -29,19 +28,22 @@
     <div *ngIf="otherLocation">
         <label>Other pickup location</label>
         <input [(ngModel)]="newOrder.location" name="otherLocation"  type="text" placeholder="Other Location">
+        <button type="button" class="btn btn-light last" (click)="searchNewLocation()">Search new Location</button>
+        <label class="last">Or</label>
+        <button type="button" class="btn btn-success last" (click)="findMyLocation()">Find my location</button>
     </div>
     
   </div> 
     <!-- Home-care Options-->
   <div *ngIf="homeOrder" class="query">
-    <label for="homeOption">Home pruchase Option</label>
-    <select name="homeOption" (change)="choice($event.target.value)">
+    <label class="last" for="homeOption">Home pruchase Option</label>
+    <select class="btn btn-info" name="homeOption" (change)="choice($event.target.value)">
         <option disabled selected value> -- select an option -- </option>
         <option value="propane">Propane refill?</option>
         <option value="newInstall">New installation</option>
-        <option value="Emission">Emission Test</option>
     </select>
-    <textarea *ngIf="installDetail" [(ngModel)]="newOrder.installDetail" name="newInstallDetail" rows="4" cols="50" placeholder="Detail of installation"></textarea>
+    <textarea class="last" *ngIf="installDetail" [(ngModel)]="newOrder.installDetail" name="newInstallDetail" rows="4"  placeholder="Detail of installation"></textarea>
   </div>
-  <input class="submit" *ngIf="orderComplete" type="submit" (click)="submitOrder()" value="Submit my order">
+  <app-map-api class="last" *ngIf="showMap" [findMe]="findMe" [dynamicAddress]="dynamicAddress" (positionToReturn)="getPosition($event)"></app-map-api>
+  <input class="btn btn-secondary last" *ngIf="orderComplete" type="submit" (click)="submitOrder()" value="Submit my order">
 </section>

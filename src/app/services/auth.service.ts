@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core'
 import {Http, Response} from '@angular/http'
-import {map} from 'rxjs/operators'
+import {map, catchError} from 'rxjs/operators'
 import {Observable} from 'rxjs'
 import { Router } from '@angular/router'
 
@@ -28,7 +28,7 @@ export class AuthService {
     .pipe(map(res=>res.json()))
   }
 
-  getLoggedUser(){
+  getLoggedUser(): Observable<string>{
     return this.http.get(this.url + 'loggedUser', {withCredentials:true})
     .pipe(map(res=>{
       return res.json()
@@ -37,8 +37,15 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('user')
-    this.router.navigate(['login'])
     console.log("user removed")
+
+    return this.http.get(this.url + 'logout').toPromise()
+    .then((res: Response)=> {
+      console.log(res)
+      
+      this.router.navigate(['login'])
+    })
+    .catch(e=>console.log(e))
   }
 
 }
