@@ -10,7 +10,8 @@ export class EmergencyService {
 
   constructor(private http:Http) {}
 
-  url = "http://localhost:3000/report/"
+  // url = "http://localhost:3000/report/"
+  url = "/report/"
 
   //Get all reports - NOT USED YET
   getAllReports(){
