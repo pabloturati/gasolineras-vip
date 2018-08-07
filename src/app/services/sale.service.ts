@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators'
 })
 export class SaleService {
   // url = "http://localhost:3000/sale/"
-  url = "/sale/"
+  url = "/api/sale/"
   
   constructor(private http:Http) {}
 

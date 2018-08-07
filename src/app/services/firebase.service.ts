@@ -18,7 +18,8 @@ firebase.initializeApp(config);
 })
 
 export class FirebaseService {
-  url = 'http://localhost:3000/'
+  // url = 'http://localhost:3000/'
+  url = "/api/"
   constructor() { }
   provider = new firebase.auth.FacebookAuthProvider()
   googleProvider = new firebase.auth.GoogleAuthProvider()
