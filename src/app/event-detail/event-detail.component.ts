@@ -13,7 +13,9 @@ export class EventDetailComponent implements OnInit {
   order: any
   sale: any = {}
   showEdit: boolean = false
-
+  servicedBy: string =""
+  servicedDate: string = ""
+  
   constructor(
     private activeRoute: ActivatedRoute,
     private saleService: SaleService,
@@ -40,10 +42,6 @@ export class EventDetailComponent implements OnInit {
     this.router.navigateByUrl('/profile')
   }
 
-  editOrder(){
-    console.log("editOrder()")
-    
-  }
   cancelOrder(){
     this.saleService.deleteSale(this.id)
     .subscribe(sale=>{
