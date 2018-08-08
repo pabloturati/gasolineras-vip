@@ -10,10 +10,10 @@ export class EmergencyService {
 
   constructor(private http:Http) {}
 
-  // url = "http://localhost:3000/report/"
+  // url = "http://localhost:3000/api/report/"
   url = "/api/report/"
 
-  //Get all reports - NOT USED YET
+  //Get all reports (returns only this user's reports)
   getAllReports(){
     return this.http.get(this.url).toPromise()
     .then((res: Response)=> res.json())
@@ -23,6 +23,12 @@ export class EmergencyService {
   //Create a report
   createReport(obj){
     return this.http.post(this.url, obj, {withCredentials: true})
+    .pipe(map((res: Response)=>res.json()))
+  }
+
+  //Cancel Report (does NOT delete it)
+  cancelReport(id){
+    return this.http.patch(this.url + id, id)
     .pipe(map((res: Response)=>res.json()))
   }
 }

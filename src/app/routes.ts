@@ -2,7 +2,6 @@ import { Routes } from '@angular/router'
 import { AppComponent } from './app.component';
 // import { SignupFormComponent } from './signup-form/signup-form.component';
 // import { ProductPageComponent } from './product-page/product-page.component';
-// import { DetailComponent } from './detail/detail.component';
 // import {EditProductComponent} from './edit-product/edit-product.component'
 // import { NewProductComponent } from './new-product/new-product.component';
 import { LoginComponent } from './login/login.component'
@@ -11,9 +10,9 @@ import { LearnMoreComponent} from './learn-more/learn-more.component'
 import { ProfileComponent } from './profile/profile.component'
 import { NewOrderComponent } from './new-order/new-order.component'
 import { RoadAssistanceComponent} from './road-assistance/road-assistance.component'
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 export const routes: Routes = [
-    // { path: 'private', component: PrivateComponent},
     { path: 'profile', component: ProfileComponent},
     { path: 'login', component: LoginComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -41,15 +40,15 @@ export const routes: Routes = [
     //   path: 'signup',
     //   component: SignupFormComponent
     // },
-    // {
-    //   path: 'detail/:id',
-    //   component: DetailComponent,
-    //   children:[
-    //       {
-    //           path:'edit',
-    //           component:EditProductComponent
-    //       }
-    //   ]
-    // }
+    {
+      path: 'detail/:id',
+      component: EventDetailComponent,
+      children:[
+          // {
+          //     path:'edit',
+          //     component:EditProductComponent
+          // }
+      ]
+    }
   ]
 

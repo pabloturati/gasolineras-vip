@@ -33,7 +33,10 @@ export class RoadAssistanceComponent implements OnInit {
 
   ngOnInit() {
     this.resetForm()
-    //Get logged user
+    this.getUser()
+  }
+
+  getUser(){
     this.authService.getLoggedUser()
     .subscribe(response=>{
       this.user = response;
@@ -51,7 +54,6 @@ export class RoadAssistanceComponent implements OnInit {
   toggleCarHome(value){
     this.newReport.operation = value;
     this.locationQuery = true;  //Activate next question
-    console.log(this.newReport.operation)
   }
   location(value){
     if(value == "Home" && this.user.address){
@@ -75,7 +77,7 @@ export class RoadAssistanceComponent implements OnInit {
   }
 
   getPosition(e){
-    alert("You Have been located! Latitude: "+e.lat+" Longitud "+e.lng)
+    // alert("You Have been located! Latitude: "+e.lat+" Longitud "+e.lng)
     this.newReport.location = JSON.stringify(e)
   }
 
@@ -85,7 +87,6 @@ export class RoadAssistanceComponent implements OnInit {
   }
 
   sumbmitToVerify(){
-    console.log(this.newReport)
     this.showConfirm = true;
   }
 
@@ -96,7 +97,7 @@ export class RoadAssistanceComponent implements OnInit {
   finalVerify(){
     this.emergencyService.createReport(this.newReport)
     .subscribe(p=>{
-      alert("Emergency REPORTED wait for service arrival")
+      // alert("Emergency REPORTED wait for service arrival")
       this.showConfirm  = false;
       this.router.navigate(['profile'])
     }) 

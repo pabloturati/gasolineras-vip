@@ -1,0 +1,27 @@
+<section>
+  <h2>Order details</h2>
+  <ul>
+    <!-- <li>{{sale._id}}</li> -->
+    <li class="bold">Order requested on:</li>
+    <li>{{sale.created_at | date:'fullDate'}}</li>
+    <li>at {{sale.created_at | date:'h:mm a z'}}</li>
+    <li class="bold">Service for</li>
+    <li> your {{sale.operation}}</li>
+    <li class="bold">Order Instructions:</li>
+    <li>{{sale.serviceChoice}}</li>
+    <li class="bold">Location for service:</li>
+    <li>{{sale.location}}</li>
+  </ul>
+  <h2>Service Provider details</h2>
+  <ul>
+    <li class="bold">Current order status</li>
+    <li >{{sale.orderStatus}}</li>
+    <li>Serviced by: <span class="bold">{{servicedBy}}</span></li>
+    <li>Serviced date: <span class="bold">{{servicedDate}}</span></li>
+  </ul>
+  <div id="controls">
+      <button (click)="navigateToProfile()" type="button" class="btn btn-primary">Return to profile</button>
+      <button *ngIf="false" (click)="editOrder()" type="button" class="btn btn-secondary">Edit this order</button>
+      <button (click)="cancelOrder()" type="button" class="btn btn-info">Cancel this order</button>
+  </div>
+</section>

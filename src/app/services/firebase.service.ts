@@ -18,21 +18,28 @@ firebase.initializeApp(config);
 })
 
 export class FirebaseService {
-  // url = 'http://localhost:3000/'
+  // url = 'http://localhost:3000/api/'
   url = "/api/"
+
   constructor() { }
   provider = new firebase.auth.FacebookAuthProvider()
   googleProvider = new firebase.auth.GoogleAuthProvider()
 
+  // loginWithFacebook(){
+  //   return firebase.auth().signInWithPopup(this.provider)
+  //   .then(snap=>{
+  //     localStorage.setItem('user', JSON.stringify(snap.user))      
+  //     this._sendTokenToBackend(snap)        
+  //     // return snap
+  //   })
+  // }
   loginWithFacebook(){
     return firebase.auth().signInWithPopup(this.provider)
     .then(snap=>{
-      //console.log(snap)
-      //localStorage.setItem('facebookToken', JSON.stringify(snap.credential.accessToken) )
-      localStorage.setItem('user', JSON.stringify(snap.user))      
-      this._sendTokenToBackend(snap)        
-      return snap
-      //return snap
+      // //console.log(snap.credential.accessToken)
+      // localStorage.setItem('facebookToken', JSON.stringify(snap.credential.accesstoken) )
+      localStorage.setItem('user', JSON.stringify(snap.user))
+      this._sendTokenToBackend(snap)
     })
   }
 
@@ -40,6 +47,9 @@ export class FirebaseService {
     firebase.auth().signInWithPopup(this.googleProvider)
     .then(snap=>{
       console.log(snap.user)
+      localStorage.setItem('user', JSON.stringify(snap.user))      
+      this._sendGoogleTokenToBackend(snap)        
+      return snap
     })
   }
 
@@ -60,4 +70,23 @@ export class FirebaseService {
       return res
     }) 
   }
+  _sendGoogleTokenToBackend(snap){
+    const token = snap.credential.accessToken
+    fetch(this.url + 'google/login', {
+      method:'post',
+      headers:{
+        'Authorization': `Bearer ${token}`
+      }
+    }) 
+    .then(r=>{
+      if(!r.ok) throw new Error()
+      return r.json()
+    
+    })
+    .then(res=>{
+      return res
+    }) 
+  }
 }
+
+  

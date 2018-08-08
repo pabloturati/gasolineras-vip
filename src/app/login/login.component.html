@@ -3,26 +3,75 @@
   <div class="main" *ngIf="isLogged">
       <!-- *ngIf="isLogged" -->
     <div class="localLogin">
-      <h2>Registered Users</h2>
-      <input placeholder="Email" [(ngModel)]="auth.email" type="email" required>
-      <input placeholder="Password" [(ngModel)]="auth.password"  type="password" required>
-      <button class="action" (click)="login()" >Login</button>
+      <h2 id="title">Registered Users</h2>
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
+        <input required name="email" placeholder="Email" [(ngModel)]="auth.email" type="email" required>
+        <input required name="password" class="password" placeholder="Password" [(ngModel)]="auth.password"  type="password">
+        <input class="action" type="submit">
+      </form>
     </div>
+    <div *ngIf="false" class="localLogin">
+        <button type="button" class="btn btn-primary" (click)="loginWithFacebook()" >Facebook Login</button>
+        <button type="button" class="btn btn-danger" (click)="loginWithGoogle()" >Google Login</button>
+    </div>
+    <h3>Want a free account? <span class="btn-link" (click)="change()" >Click HERE</span></h3>
+  </div>
+
+  <div class="main" *ngIf="!isLogged">
+      <!-- *ngIf="isLogged" -->
     <div class="localLogin">
-      <button type="button" class="btn btn-primary" (click)="loginWithFacebook()" >Facebook Login</button>
-      <button type="button" class="btn btn-danger" (click)="loginWithGoogle()" >Google Login</button>
+      <h2 id="title">Create your new free account</h2>
+      <form #loginForm="ngForm" (ngSubmit)="signup(loginForm)" >
+        <input required name="username" placeholder="Username"[(ngModel)]="auth.username" type="text">
+        <input required name="email" placeholder="Email" [(ngModel)]="auth.email" type="email">
+        <input required name="address" class="Address" placeholder="Physical Address" [(ngModel)]="auth.address" type="text">
+        <input required name="password" class="password" placeholder="Password" [(ngModel)]="auth.password"  type="password">
+        <input required name="password2" class="password" placeholder="Repite tu Password"  type="password">
+        <input class="action" type="submit">
+      </form>
     </div>
-    <h3>Want a free account? <span (click)="change()" >Click HERE</span></h3>
+    <h3>Want a free account? <span class="btn-link" (click)="change()" >Click HERE</span></h3>
   </div>
+
   
-  <div class="create" *ngIf="!isLogged">
-      <!-- *ngIf="!isLogged" -->
+  <!-- <div class="create" *ngIf="">
     <h2>Create your new free account</h2>
-    <input placeholder="Username"[(ngModel)]="auth.username" type="text">
-    <input placeholder="Email" [(ngModel)]="auth.email" type="email" required>
-    <input placeholder="Physical Address" [(ngModel)]="auth.address" type="text">
-    <input placeholder="Your password" [(ngModel)]="auth.password"  type="password" required>
+    <input required placeholder="Username"[(ngModel)]="auth.username" type="text">
+    <input required placeholder="Email" [(ngModel)]="auth.email" type="email" required>
+    <input required class="password" placeholder="Physical Address" [(ngModel)]="auth.address" type="text">
+    <input required class="password" placeholder="Your password" [(ngModel)]="auth.password"  type="password">
     <button class="action" (click)="signup()" >Register</button>
-    <h3>Already have an account? <span (click)="change()" >Click HERE</span></h3>
-  </div>
-</section>
+    <h3>Already have an account? <span class="btn-link" (click)="change()" >Click HERE</span></h3>
+  </div> -->
+
+</section> 
+
+
+
+<!-- <section >
+    <div class="main" *ngIf="isLogged">
+
+      <div class="localLogin">
+        <h2>Registered Users</h2>
+        <input placeholder="Email" [(ngModel)]="auth.email" type="email" required>
+        <input class="password" placeholder="Password" [(ngModel)]="auth.password"  type="password" required>
+        <button class="action" (click)="login()" >Login</button>
+      </div>
+      <div class="localLogin">
+        <button type="button" class="btn btn-primary" (click)="loginWithFacebook()" >Facebook Login</button>
+        <button type="button" class="btn btn-danger" (click)="loginWithGoogle()" >Google Login</button>
+      </div>
+      <h3>Want a free account? <span class="btn-link" (click)="change()" >Click HERE</span></h3>
+    </div>
+    
+    <div class="create" *ngIf="!isLogged">
+
+      <h2>Create your new free account</h2>
+      <input required placeholder="Username"[(ngModel)]="auth.username" type="text">
+      <input required placeholder="Email" [(ngModel)]="auth.email" type="email" required>
+      <input required class="password" placeholder="Physical Address" [(ngModel)]="auth.address" type="text">
+      <input required class="password" placeholder="Your password" [(ngModel)]="auth.password"  type="password">
+      <button class="action" (click)="signup()" >Register</button>
+      <h3>Already have an account? <span class="btn-link" (click)="change()" >Click HERE</span></h3>
+    </div>
+  </section> -->

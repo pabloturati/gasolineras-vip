@@ -16,22 +16,40 @@ h2{
 section{
     width:90%;
     min-height: 90%;
-    /* min-height: 90%; */
     background-color: lightgray;
     margin: auto;
     margin-top: 3px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: space-between;
 }
 /* Emergency Service Section */
+
+#activeTitle{
+    margin: 0; 
+    margin-top: 10px;
+    padding: 0;
+    font-size: 20px;
+    padding: 5px;
+
+    animation-name: colorChange;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    font-size: 20px;
+}
+@keyframes colorChange {
+    from {background-color: rgba(236,62,71,1);}
+    to {background-color: rgba(236,62,71,0);}
+}
 div.emergencyServices{
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: space-between;
-    margin: 10px 0 10px 0;
+    margin: 0px 0 10px 0;
 }
 
 div.emergencyServices button{
@@ -71,11 +89,15 @@ span{
 }
 
 
-#listBtn{
+.listBtn{
     margin-top: 5px;
+    padding: 2px 4px 2px 4px;
     width: 300px;
+    text-align: center;
+    border: 2px solid darkblue;
+    cursor: pointer;
+    border-radius: 10px;
 }
-
 #orderGroup{
     margin-top:20px;
 }
@@ -86,9 +108,7 @@ span{
 .progress{
     width: 80%;
     background-color: white;
-    
     display: flex;
-    /* justify-content: flex-start; */
     align-items: flex-start;
 
 }

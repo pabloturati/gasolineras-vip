@@ -22,7 +22,10 @@ export class MapApiComponent implements OnChanges{
   geocoder: google.maps.Geocoder;  //To find addresses
   infoWindow: google.maps.InfoWindow; //To find by device location
   address: string = ""
-  pos: any
+  pos: {
+    lat: any,
+    lng: any,
+  }
 
   @Input() dynamicAddress: string;
   @Input() findMe: boolean;
@@ -76,7 +79,7 @@ export class MapApiComponent implements OnChanges{
   // Find user's position. Stores it in 
   getPosition() {
     this.infoWindow = new google.maps.InfoWindow;
-    this.pos = {}
+    // this.pos = {}
     return new Promise((resolve, reject)=>{
       navigator.geolocation.getCurrentPosition(resolve, reject)
     })
@@ -103,15 +106,11 @@ export class MapApiComponent implements OnChanges{
   geocodeAddress() {
     this.geocoder = new google.maps.Geocoder();
     this.geocoder.geocode({'address': this.address}, (results, status)=>{
-     // if (status === 'OK') {
         this.map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
           map: this.map,
           position: results[0].geometry.location
         })
-      // } else {
-      //   alert('Geocode was not successful for the following reason: ' + status);
-      // }
     });
   }
 

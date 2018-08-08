@@ -48,12 +48,10 @@ div#carouselSlides, div#innerCarouselSlides{
     padding: 0;
     height: 350px;
     width:100%;
-    background-color: bisque;
     box-sizing: border-box;
 }
 
 div#innerCarouselSlides{
-    background-color: orange;
     margin:0;
     padding:0;
 }

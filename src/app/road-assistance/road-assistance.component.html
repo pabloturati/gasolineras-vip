@@ -7,7 +7,7 @@
       <option value="Roadside Assistance">Roadside Assitance</option>
       <option value="Gas Leak">Gas Leak</option>
     </select>
-    <textarea class="last" [(ngModel)]="newReport.detail" name="newInstallDetail" rows="4"  placeholder="Detail of installation"></textarea>
+    <textarea *ngIf="locationQuery" id="emergencyText"class="last" [(ngModel)]="newReport.detail" name="newInstallDetail" rows="4"  placeholder="Details of Emergency"></textarea>
   </div>
   <!-- Location -->
   <div *ngIf="locationQuery">
@@ -40,6 +40,11 @@
   <p class="lead">Please review the emergency request details before sending</p>
   <hr class="my-4">
   <p>Details are as follow:</p>
+  <ul>
+    <li><span class="bold">Problem with: </span>  {{newReport.operation}}</li>
+    <li><span class="bold">At: </span>  {{newReport.location}}</li>
+    <li><span class="bold">Detail of the emergecy: </span> {{newReport.detail}}</li>
+  </ul>
   <a class="btn btn-danger btn-lg" role="button" (click)="finalVerify()">Report Emergency</a>
   <a class="btn btn-primary btn-lg" role="button" (click)="cancelReport()">Cancel Report</a>
 </div>

@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class SaleService {
-  // url = "http://localhost:3000/sale/"
+  // url = "http://localhost:3000/api/sale/"
   url = "/api/sale/"
   
   constructor(private http:Http) {}
@@ -20,7 +20,7 @@ export class SaleService {
     .catch(e=>console.log(e))
   }
 
-  //Get one sale  - NOT USED YET
+  //Get one sale
   getOneSale(id){
     return this.http.get(this.url + id)
     .pipe(map((res:Response)=>res.json()))
@@ -29,6 +29,12 @@ export class SaleService {
   //Create a sale
   createSale(obj){
     return this.http.post(this.url, obj, {withCredentials: true})
+    .pipe(map((res: Response)=>res.json()))
+  }
+
+  //Delete a sale
+  deleteSale(id){
+    return this.http.delete(this.url + id)
     .pipe(map((res: Response)=>res.json()))
   }
 }

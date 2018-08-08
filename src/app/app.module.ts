@@ -1,11 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
-
-import {FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { RouterModule } from "@angular/router";
-import {HttpModule} from '@angular/http'
+import { HttpModule } from '@angular/http'
 
 // import { SignupFormComponent } from './signup-form/signup-form.component';
 // import { ProductPageComponent } from './product-page/product-page.component';
@@ -16,11 +14,13 @@ import {HttpModule} from '@angular/http'
 import {routes} from './routes'
 
 //services
-import {AuthService} from './services/auth.service'
-// import {ProductListService} from './product-list.service';
-// import { EditProductComponent } from './edit-product/edit-product.component'
-// import {PhoneService} from './services/phones.service';
-// import { NewProductComponent } from './new-product/new-product.component';
+import { AuthService } from './services/auth.service'
+import { EmergencyService } from './services/emergency.service'
+import { FirebaseService } from './services/firebase.service'
+import { SaleService } from './services/sale.service';
+
+
+//Components
 import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 import { NavComponent } from './nav/nav.component';
@@ -28,11 +28,12 @@ import { LearnMoreComponent } from './learn-more/learn-more.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NewOrderComponent } from './new-order/new-order.component';
 import { RoadAssistanceComponent } from './road-assistance/road-assistance.component';
-// import { GasEmergencyComponent } from './gas-emergency/gas-emergency.component';
+
 
 //Child Sample
 import { ChildSampleComponent } from './child-sample/child-sample.component';
 import { MapApiComponent } from './map-api/map-api.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MapApiComponent } from './map-api/map-api.component';
     NewOrderComponent,
     RoadAssistanceComponent,
     ChildSampleComponent,
-    MapApiComponent   //Child Sample
+    MapApiComponent,
+    EventDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,10 @@ import { MapApiComponent } from './map-api/map-api.component';
     HttpModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    EmergencyService,
+    FirebaseService,
+    SaleService
   ],
   bootstrap: [AppComponent]
 })

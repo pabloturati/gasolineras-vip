@@ -8,7 +8,6 @@
 <div *ngFor="let c of chatItems">Child says: {{ c }}</div> -->
 <!-- Child Sample ends Here -->
 
-<router-outlet ></router-outlet>
-<!-- (activate)="componentAdded($event)" -->
+<router-outlet (activate)="componentAdded($event)" ></router-outlet>
 
 

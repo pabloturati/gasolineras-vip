@@ -3,7 +3,6 @@ import {AuthService} from '../services/auth.service'
 import {Router} from '@angular/router'
 import {FirebaseService} from '../services/firebase.service'
 import {UpdateNavService} from '../services/update-nav.service'
-//import { Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +10,19 @@ import {UpdateNavService} from '../services/update-nav.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   isLogged = true
-  auth = {}
+  auth: {
+    email: string,
+    password: string,
+    username: string,
+    address: string
+  } = {
+    email: "",
+    password: "",
+    username: "",
+    address: ""
+  }
   user:any = null
 
   constructor(
@@ -26,12 +36,12 @@ export class LoginComponent implements OnInit {
     this.isLogged = !this.isLogged;
   }
 
-  signup(){
+  signup(f){
     this.authService.signup(this.auth)
     .subscribe(
       response=>{
         this.user = response
-        alert("User Crated. Welcole "+this.user.username+". Please login to your new account")
+        alert("User Created. Welcole "+this.user.username+". Please login to your new account")
         console.log(this.user.username)
       },
       error => {
@@ -40,41 +50,41 @@ export class LoginComponent implements OnInit {
         console.log(error)
       },
       () => {
-        this.login();
-      }
-    )
+        this.login(f);
+      })
   }
 
-  login(){
+  login(f){
     this.authService.login(this.auth).toPromise()
     .then(user=>{
       this.user = user
       localStorage.setItem('user', JSON.stringify(user))
       this.router.navigate(['profile']) 
-      window.location.reload();
     })
     .catch(e=>{
       alert(e.statusText+ " Please verify your credentials or create an account")
     })
   }
 
-  loginWithFacebook(){
-    this.firebaseService.loginWithFacebook()
-      .then(response=>{
-        console.log(`que pedo`, response)
-        localStorage.setItem('user',JSON.stringify(response.user))
-        //window.location.reload();
-        this.authService.getLoggedUser()
-        .subscribe(r=>{
-          this.router.navigate(['profile'])
-          console.log("regreso: ", r)
-        })
-      })
-    
-  }
-  loginWithGoogle(){
-    this.firebaseService.loginWithGoogle()
-  }
+  // loginWithFacebook(){
+  //   this.firebaseService.loginWithFacebook()
+  //     .then(response=>{
+  //       this.authService.getLoggedUser()
+  //       .subscribe(r=>{
+  //         this.router.navigate(['profile'])
+  //       })
+  //     })
+  // }
+  // loginWithGoogle(){
+  //   this.firebaseService.loginWithGoogle()
+  //     .then(response=>{
+  //       localStorage.setItem('user',JSON.stringify(response.user))
+  //       this.authService.getLoggedUser()
+  //       .subscribe(r=>{
+  //         this.router.navigate(['profile'])
+  //       })
+  //   })
+  // }
   redirectToProfile(){
     if(localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'))

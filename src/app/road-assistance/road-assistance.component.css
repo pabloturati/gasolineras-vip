@@ -31,3 +31,15 @@ section *{
     flex-direction: column;
     justify-content: space-around;
 }
+
+#emergencyText{
+    margin-top: 15px;
+    width: 300px;
+    border: 1px solid gray;
+}
+ul{
+    list-style: none;
+}
+.bold{
+    font-weight: bold;
+}
